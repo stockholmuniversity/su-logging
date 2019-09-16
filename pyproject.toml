@@ -13,6 +13,10 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.5"
+logstash_formatter = { version = "^0.5.17", optional = true }
+
+[tool.poetry.extras]
+structured = ["logstash_formatter"]
 
 [tool.poetry.dev-dependencies]
 isort = "~4.3.21"
