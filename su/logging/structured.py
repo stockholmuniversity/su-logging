@@ -12,30 +12,27 @@ import logging
 import logstash_formatter
 
 
-class RemoveUnusedFieldsFilter(logging.Filter):
-    # pylint: disable=too-few-public-methods,no-self-use
-    """Unset unused log record entries"""
-    def filter(self, record):
-        record.args = None
-        record.created = None
-        record.filename = None
-        record.funcName = None
-        record.levelno = None
-        record.lineno = None
-        record.module = None
-        record.msecs = None
-        record.pathname = None
-        record.relativeCreated = None
-        record.thread = None
-        return True
-
-
 class CleanNoneAndUnusedFieldsEncoder(json.JSONEncoder):
     """Remove fields which are None or unused"""
     def encode(self, o):
+        unused_fields = (
+            '@version',
+            'args',
+            'created',
+            'filename',
+            'funcName',
+            'levelno',
+            'lineno',
+            'module',
+            'msecs',
+            'pathname',
+            'relativeCreated',
+            'thread',
+        )
         for key, value in list(o.items()):
-            if value is None or key == '@version':
+            if value is None or key in unused_fields:
                 del o[key]
+
         o = super().encode(o)
         return o
 
@@ -44,4 +41,3 @@ for handler in logging.getLogger().handlers:
     handler.setFormatter(
         logstash_formatter.LogstashFormatterV1(
             json_cls=CleanNoneAndUnusedFieldsEncoder))
-    handler.addFilter(RemoveUnusedFieldsFilter())
