@@ -11,6 +11,14 @@ logger = logging.getLogger("myapp")
 logger.info("My INFO message")
 ```
 
+For easier developing you can also enable console logging:
+```python
+from su.logging import console, logging
+
+logger = logging.getLogger("myapp")
+logger.info("My INFO message")
+```
+
 ### Structured logging
 We use
 [logstash_formatter](https://github.com/ulule/python-logstash-formatter/)'s
@@ -29,4 +37,3 @@ except Exception as e:
 
 ## TODO
 * [ ] [Some sort of versioning?](https://github.com/sdispater/poetry/issues/1036#issuecomment-489880822)
-* [ ] Add STDOUT handler?
