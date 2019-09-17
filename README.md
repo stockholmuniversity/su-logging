@@ -23,6 +23,8 @@ logger.info("My INFO message")
 We use
 [logstash_formatter](https://github.com/ulule/python-logstash-formatter/)'s
 `LogstashFormatterV1` and remove some unused/unnecesary fields.
+
+Depend on `su-logging[structured]` in e.g. your `requirements.txt` and then:
 ```python
 from su.logging import structured, logging
 
