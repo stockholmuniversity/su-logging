@@ -19,15 +19,15 @@ class CleanNoneAndUnusedFieldsEncoder(json.JSONEncoder):
             '@version',
             'args',
             'created',
-            'filename',
             'funcName',
             'levelno',
-            'lineno',
             'module',
             'msecs',
             'pathname',
+            'processName',
             'relativeCreated',
             'thread',
+            'threadName',
         )
         for key, value in list(o.items()):
             if value is None or key in unused_fields:
