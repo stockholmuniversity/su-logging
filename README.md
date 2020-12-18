@@ -37,5 +37,24 @@ except Exception as e:
     logger.exception(e, extra={"user": "simlu"})
 ```
 
+### Container usage
+In Containers, which usually adhere to the 12 factor apps manifesto, you
+usually log to STDOUT and let your container engine deal with them. Usually you
+don't have a syslog server listening on localhost:514 either. So to enable
+structured logging to STDOUT and disable syslog we need to:
+* Import `structured` after `console`
+* Remove the `SysLogHandler`
+
+```python
+from su.logging import logging, console, structured
+
+for h in list(logging.getLogger().handlers):
+    if isinstance(h, logging.handlers.SysLogHandler):
+        logging.getLogger().removeHandler(h)
+
+logger = logging.getLogger("myapp")
+logger.info("My INFO message")
+```
+
 ## TODO
 * [ ] [Some sort of versioning?](https://github.com/sdispater/poetry/issues/1036#issuecomment-489880822)
