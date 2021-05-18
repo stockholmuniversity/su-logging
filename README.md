@@ -4,6 +4,9 @@ Easy to use logging for Stockholm University.
 
 ## Usage
 
+### Syslog
+
+For normal usage which logs to syslog:
 ```python
 from su.logging import logging
 
@@ -11,7 +14,8 @@ logger = logging.getLogger("myapp")
 logger.warning("My WARNING message")
 ```
 
-For easier developing you can also enable console logging:
+### Console
+For easier developing you can also switch to console logging:
 ```python
 from su.logging import console, logging
 
