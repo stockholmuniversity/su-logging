@@ -8,7 +8,7 @@ Easy to use logging for Stockholm University.
 from su.logging import logging
 
 logger = logging.getLogger("myapp")
-logger.info("My INFO message")
+logger.warning("My WARNING message")
 ```
 
 For easier developing you can also enable console logging:
@@ -16,7 +16,7 @@ For easier developing you can also enable console logging:
 from su.logging import console, logging
 
 logger = logging.getLogger("myapp")
-logger.info("My INFO message")
+logger.warning("My WARNING message")
 ```
 
 ### Structured logging
@@ -26,10 +26,10 @@ We use
 
 Depend on `su-logging[structured]` in e.g. your `requirements.txt` and then:
 ```python
-from su.logging import structured, logging
+from su.logging import logging, structured
 
 logger = logging.getLogger("myapp")
-logger.info("User logged in", extra={"user": "simlu"})
+logger.warning("User logged in", extra={"user": "simlu"})
 
 try:
     raise Exception("User performed illegal activity")
@@ -53,7 +53,7 @@ for h in list(logging.getLogger().handlers):
         logging.getLogger().removeHandler(h)
 
 logger = logging.getLogger("myapp")
-logger.info("My INFO message")
+logger.warning("My WARNING message")
 ```
 
 ## TODO
