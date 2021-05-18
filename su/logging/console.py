@@ -13,3 +13,8 @@ import sys
 HANDLER = logging.StreamHandler(sys.stdout)
 LOGGER = logging.getLogger()
 LOGGER.addHandler(HANDLER)
+
+# We're logging to console, remove syslog handler
+for h in list(logging.getLogger().handlers):
+    if isinstance(h, logging.handlers.SysLogHandler):
+        logging.getLogger().removeHandler(h)

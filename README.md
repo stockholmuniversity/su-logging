@@ -43,18 +43,9 @@ except Exception as e:
 
 ### Container usage
 In Containers, which usually adhere to the 12 factor apps manifesto, you
-usually log to STDOUT and let your container engine deal with them. Usually you
-don't have a syslog server listening on localhost:514 either. So to enable
-structured logging to STDOUT and disable syslog we need to:
-* Import `structured` after `console`
-* Remove the `SysLogHandler`
-
+usually log to STDOUT and let your container engine deal with them.
 ```python
-from su.logging import logging, console, structured
-
-for h in list(logging.getLogger().handlers):
-    if isinstance(h, logging.handlers.SysLogHandler):
-        logging.getLogger().removeHandler(h)
+from su.logging import console, logging, structured
 
 logger = logging.getLogger("myapp")
 logger.warning("My WARNING message")
