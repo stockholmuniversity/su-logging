@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "su-logging"
-version = "0.3.0"
+version = "1.0.0"
 description = "Logging for Stockholm University"
 homepage = "https://github.com/stockholmuniversity/su-logging"
 repository = "https://github.com/stockholmuniversity/su-logging"
