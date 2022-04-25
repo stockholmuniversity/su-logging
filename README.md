@@ -53,3 +53,4 @@ logger.warning("My WARNING message")
 
 ## TODO
 * [ ] [Some sort of versioning?](https://github.com/sdispater/poetry/issues/1036#issuecomment-489880822)
+* [ ] Maybe [create an exception hook by default](https://python.plainenglish.io/creating-beautiful-tracebacks-with-pythons-exception-hooks-c8a79e13558d)?
